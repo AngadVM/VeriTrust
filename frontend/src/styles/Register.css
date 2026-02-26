@@ -4,112 +4,295 @@
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background: linear-gradient(135deg, #121212 0%, #1e1e2f 100%);
-    color: white;
     padding: 20px;
     box-sizing: border-box;
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 40px;
+.auth-wrapper {
+    display: flex;
     width: 100%;
-    max-width: 450px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    max-width: 1000px;
+    min-height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #1a1b26;
+    /* Dark slate background as per reference */
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    animation: authReveal 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.glass-card h2 {
-    margin-top: 0;
-    margin-bottom: 24px;
-    text-align: center;
-    font-size: 2rem;
-    background: linear-gradient(90deg, #646cff, #a78bfa);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+@keyframes authReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.input-group {
-    margin-bottom: 20px;
+.auth-side-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.input-group label {
-    margin-bottom: 8px;
+.auth-image-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.auth-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.auth-logo-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.back-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
     font-size: 0.9rem;
-    color: #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.auth-quote {
+    margin-bottom: 20px;
+}
+
+.auth-quote h3 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    color: white;
+}
+
+.auth-quote p {
+    margin: 5px 0 0;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.auth-indicators {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.indicator {
+    width: 12px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.indicator.active {
+    width: 24px;
+    background: white;
+}
+
+.auth-side-form {
+    flex: 1.2;
+    padding: 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.auth-form-content {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.auth-form-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #fff;
+}
+
+.auth-form-content .subtitle {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 30px 0;
+}
+
+.auth-form-content .subtitle a {
+    color: #9e85f5;
+    /* Matching purple from reference */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-form-content .subtitle a:hover {
+    color: #b7a6fc;
+    text-decoration: underline;
+}
+
+.input-group {
+    margin-bottom: 20px;
 }
 
 .input-group input {
-    padding: 12px 16px;
+    width: 100%;
+    padding: 14px 16px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
-    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Same as ref */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95rem;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .input-group input:focus {
-    border-color: #646cff;
+    border-color: #9e85f5;
+    background: rgba(158, 133, 245, 0.05);
 }
 
-.submit-btn,
-.export-btn {
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background: #fff;
+    border-color: #fff;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.checkbox-group label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    user-select: none;
+}
+
+.checkbox-group label a {
+    color: #9e85f5;
+    text-decoration: none;
+}
+
+.checkbox-group label a:hover {
+    text-decoration: underline;
+}
+
+.submit-btn.register-submit {
     width: 100%;
     padding: 14px;
     border-radius: 8px;
     border: none;
-    background: #646cff;
+    background: #7155e2;
+    /* Purple match from Reference */
     color: white;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.1s ease;
-    margin-top: 10px;
 }
 
-.submit-btn:hover,
-.export-btn:hover {
-    background: #535bf2;
+.submit-btn.register-submit:hover {
+    background: #8b74fc;
 }
 
-.submit-btn:active,
-.export-btn:active {
+.submit-btn.register-submit:active {
     transform: scale(0.98);
 }
 
-.submit-btn:disabled {
-    background: #444;
+.submit-btn.register-submit:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
     cursor: not-allowed;
 }
 
 .error-message {
     color: #ff6b6b;
-    font-size: 0.9rem;
-    margin-bottom: 16px;
-    text-align: center;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+/* Key Display UI updates */
+.keys-container {
+    animation: authReveal 0.4s ease forwards;
 }
 
 .success-message {
     color: #51cf66;
     font-size: 1.1rem;
-    font-weight: bold;
-    text-align: center;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
 .warning-text {
     color: #ffd43b;
     font-size: 0.85rem;
-    text-align: center;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .key-box {
@@ -119,21 +302,21 @@
 .key-box label {
     display: block;
     font-size: 0.85rem;
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 6px;
 }
 
 .key-box textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.3);
-    color: #a78bfa;
+    background: rgba(0, 0, 0, 0.2);
+    color: #b7a6fc;
     font-family: monospace;
     font-size: 0.85rem;
     resize: vertical;
-    min-height: 80px;
+    min-height: 70px;
     outline: none;
     word-break: break-all;
     box-sizing: border-box;
@@ -145,13 +328,27 @@
 }
 
 .login-link a {
-    color: #ccc;
+    color: #9e85f5;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .login-link a:hover {
-    color: #646cff;
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .auth-wrapper {
+        flex-direction: column;
+    }
+
+    .auth-side-image {
+        min-height: 250px;
+        flex: none;
+    }
+
+    .auth-side-form {
+        padding: 30px;
+    }
 }
