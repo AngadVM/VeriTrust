@@ -496,8 +496,8 @@ const Header = () => {
           {Logo}
           <div className="nav-placeholder"></div>
           <div className="header-actions">
-            <Link to="/login" className="auth-btn login-btn">Login</Link>
-            <Link to="/register" className="auth-btn register-btn">Register</Link>
+            <a href="/login" className="auth-btn login-btn">Login</a>
+            <a href="/register" className="auth-btn register-btn">Register</a>
             <button
               className="mobile-menu-toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

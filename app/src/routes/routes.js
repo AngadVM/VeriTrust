@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const authController = require("../controllers/authController");
+const authcontroller = require("../controllers/auth-controllers");
 
 router.get("/", (req, res) => {
-  res.json({ message: "Hello, World!" });
+  res.json({ message: "Hello World from Task Manager API!" });
 });
 
-router.post("/register", authController.onRegister);
-router.post("/login", authController.onLogin);
+router.get("/register", authcontroller.register);
+router.post("/login", authcontroller.login); // change
 
 module.exports = router;

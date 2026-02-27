@@ -100,6 +100,13 @@ const useSmoothScroll = () => {
       clearTimeout(resizeTimeout);
       clearTimeout(refreshTimeout);
       window.removeEventListener('resize', handleResize);
+      if (smoother) {
+        smoother.kill();
+      }
+      // Ensure body and html are reset so subsequent pages aren't hidden/locked
+      gsap.set(['body', 'html'], { clearProps: 'all' });
+      // Remove any lingering ScrollTrigger instances
+      ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
 };

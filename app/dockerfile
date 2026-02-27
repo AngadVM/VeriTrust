@@ -1,15 +1,13 @@
-FROM node:24-alpine
+FROM node:18-alpine
 
-WORKDIR /src
+WORKDIR /app
 
-COPY src/package*.json ./
+COPY package*.json ./
 
 RUN npm ci --only=production
 
-COPY src/ ./
+COPY src/ ./src/
 
 EXPOSE 3000
 
-USER node
-
-CMD ["node", "main.js"]
+CMD ["npm", "start"]

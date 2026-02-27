@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .auth-wrapper {

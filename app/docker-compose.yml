@@ -1,12 +1,15 @@
 services:
   api:
     build: .
+    container_name: VeriTrust-Backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=production
-    env_file:
-      - .env
-    restart: unless-stopped
     volumes:
-      - ./src/db/keys:/src/db/keys
+      - db-data:/app/src/db
+
+volumes:
+  db-data:
