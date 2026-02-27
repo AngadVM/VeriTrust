@@ -1,0 +1,15 @@
+FROM node:24-alpine
+
+WORKDIR /src
+
+COPY src/package*.json ./
+
+RUN npm ci --only=production
+
+COPY src/ ./
+
+EXPOSE 3000
+
+USER node
+
+CMD ["node", "main.js"]
