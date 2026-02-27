@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 // 'prop-types' import removed as requested
 
 import '../styles/Header.css';
@@ -495,7 +496,8 @@ const Header = () => {
           {Logo}
           <div className="nav-placeholder"></div>
           <div className="header-actions">
-            {/* Actions (e.g., buttons) would go here */}
+            <a href="/login" className="auth-btn login-btn">Login</a>
+            <a href="/register" className="auth-btn register-btn">Register</a>
             <button
               className="mobile-menu-toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
